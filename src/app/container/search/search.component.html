@@ -6,8 +6,19 @@
     [value]="searchText"
     [(ngModel)]="searchText"
   />
-  <button class="ekart--search--btn">
+  <button
+    [ngClass]="{
+      btn: true,
+      'btn-search': searchText,
+      'btn-search_disabled': !searchText
+    }"
+    [disabled]="!searchText"
+  >
     <i class="fa fa fa-search" aria-hidden="true"></i>
   </button>
-  <p>{{ searchText }}</p>
+</div>
+<div class="ekart-search-result" *ngIf="searchText">
+  <p>
+    Search result: <strong>{{ searchText }}</strong>
+  </p>
 </div>
